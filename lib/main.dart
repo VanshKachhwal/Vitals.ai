@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vitals_ai/screens/home.dart';
 import 'package:vitals_ai/utils/routes.dart';
+import 'package:vitals_ai/widgets/themes.dart';
 import 'screens/home.dart';
 import 'screens/login.dart';
 
@@ -15,9 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-      ),
+      theme: MyTheme.lightTheme(context),
       darkTheme: ThemeData(
         brightness: Brightness.dark
       ),
