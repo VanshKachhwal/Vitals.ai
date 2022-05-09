@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vitals_ai/screens/camera_page.dart';
 import 'package:vitals_ai/screens/home.dart';
 import 'package:vitals_ai/utils/routes.dart';
 import 'package:vitals_ai/widgets/themes.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         "/": (context) => LoginPage(),
         MyRoutes.homeRoute: (context) => HomePage(),
         MyRoutes.loginRoute: (context) => LoginPage(),
+        MyRoutes.cameraRoute: (context) => CameraPage(),
       },
     );
   }

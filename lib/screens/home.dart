@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:vitals_ai/models/test_results.dart';
 import 'package:vitals_ai/widgets/drawer.dart';
 
+import '../utils/routes.dart';
+import 'camera_page.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({ Key? key }) : super(key: key);
 
@@ -13,12 +16,17 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool takenTest = false;
 
+  void _opencamerapage() {
+     Navigator.push(context, MaterialPageRoute(builder: (context) => CameraPage()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: _opencamerapage,
+        tooltip: "Take a Test",
         child: Icon(
           CupertinoIcons.heart
         ),
