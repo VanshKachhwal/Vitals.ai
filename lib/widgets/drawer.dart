@@ -52,6 +52,19 @@ class MyDrawer extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(
+                CupertinoIcons.settings,
+                color: Colors.white,
+              ),
+              title: Text(
+                "Settings",
+                textScaleFactor: 1.2,
+                style: TextStyle(
+                  color: Colors.white
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(
                 CupertinoIcons.share,
                 color: Colors.white,
               ),
