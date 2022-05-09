@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vitals_ai/models/test_results.dart';
 import 'package:vitals_ai/widgets/drawer.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,26 +16,69 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(
+          CupertinoIcons.heart
+        ),
+        ),
       appBar: AppBar(
         title: Text("Vitals.ai"),
       ),
       body: Container(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
-          child: GridView(
+          child: GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, mainAxisSpacing: 10, crossAxisSpacing: 10),
-            physics: ScrollPhysics(),
-            children: [
-              Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white, border: Border.all(color: Colors.grey.shade300)),),
-              Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white, border: Border.all(color: Colors.grey.shade300)),),
-              Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white, border: Border.all(color: Colors.grey.shade300)),),
-              Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white, border: Border.all(color: Colors.grey.shade300)),),
-              Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white, border: Border.all(color: Colors.grey.shade300)),),
-              Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white, border: Border.all(color: Colors.grey.shade300)),),
-              
-            ],
+            itemBuilder: (context, index){
+              final testResult = ResultModel.results[index];
+              return Card(
+                clipBehavior: Clip.antiAlias,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)
+                ),
+                child: GridTile(
+                  header: Container(
+                    child: Center(
+                      child: Text(
+                        testResult.name,
+                        style: TextStyle(
+                          color: Colors.white
+                        ),
+                        ),
+                    ),
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.purple.shade300
+                    )
+                    ),
+                  child: Center(child: Text(
+                    testResult.result.toString(),
+                    style: TextStyle(
+                      fontSize: 20
+                    ),
+                    )),
+                  footer: Container(
+                    child: Center(
+                      child: Icon(
+                        CupertinoIcons.info,
+                        color: Colors.black,
+                        size: 20,
+                      ),
+                    ),
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.white
+                    )
+                    ),
+                  
+                ),
+              );
+            },
+            itemCount: ResultModel.results.length,)
             ),
-        ),),
+        ),
       drawer: MyDrawer(),
     );
   }
